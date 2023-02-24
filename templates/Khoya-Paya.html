@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/4fc31833c8.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" type="text/css" href="horizontal-scroll.css" />
+  <link rel="stylesheet" type="text/css" href="jquery.datepick.css" />
+
+
+  <title>Talaash Portal</title>
+
+  <style>
+    *,
+    ::after,
+    ::before {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      /* overflow: hidden; */
+    }
+
+    .fa-solid {
+      font-size: 25;
+    }
+  </style>
+</head>
+
+<body class="m-0 p-0 box-border overflow-x-hidden">
+  <div class="header w-full max-w-screen-2xl mx-auto flex flex-row md:justify-between justify-center items-center"
+    style="background-color: #E7F6F2">
+    <div class=" px-8 md:flex hidden ">
+      <img src="./image/talaash_logo.png" alt="portal logo " class="w-60 h-60 rounded-full">
+    </div>
+    <div class="mx-auto text-center text-2xl font-bold md:w-2/3 w-full h-full flex flex-col p-8"
+      style="height: 50%; background-color: #E7F6F2">
+      <p style="color: #395B64" class="">TALAASH, TRACKING SYSTEM</p>
+      <p style="color: #395B64" class="line-around"><span>for</span></p>
+      <p style="color: #395B64" class="">MISSING & VULNERABLE PEOPLE</p>
+
+
+    </div>
+
+    <div class=" px-8 md:flex hidden ">
+      <img src="./image/talaash_logo.png" alt="portal logo " class="w-60 h-60 rounded-full">
+    </div>
+
+  </div>
+
+  <div class="nav" style="background-color: #395B64; color:white">
+    <div
+      class="flex w-full max-w-screen-xl items-center mx-auto  lg:flex-row flex-col justify-between px-4 uppercase font-semibold">
+      <div class="cursor-pointer hover:underline"><i class="fa-solid fa-house py-3 pr-1"></i><a
+          href='./home.html'>Home</a></div>
+      <div class="cursor-pointer hover:underline"><i class="fa-solid fa-circle-info py-3 pr-1"></i><a
+          href='https://ncrb.gov.in/en/node/3455' target="_blank">about trackchild</a></div>
+      <div class="cursor-pointer hover:underline"><i class="fa-solid fa-people-group py-3 pr-1"></i><a
+          href='./login.html' target="_blank">police login</a></div>
+      <div class="cursor-pointer hover:underline"><i class="fa-solid fa-comment-dots py-3 pr-1"></i><a
+          href='./feedback.html' target="blan">feedback</a></div>
+      <div class="cursor-pointer hover:underline"><i class="fa-solid fa-gavel py-3 pr-1"></i><a
+          href='./law.html' target="_blank">Related law</a></div>
+      <div class="cursor-pointer hover:underline"><i class="fa-solid fa-phone py-3 pr-1"></i><a
+          href='./contact.html' target="_blank">contact us</a></div>
+    </div>
+  </div>
+
+
+  <div class="mx-auto text-center text-2xl font-bold md:w-2/3 w-full h-full flex flex-col p-8"
+  style="height: 50%; background-color: #E7F6F2">
+  <p style="color: #395B64" class="">Login</p>
+  
+  
+ 
+    <div style="width: 100%; margin-left: auto; margin-right: auto; text-align: center;">
+        <br />
+        
+           
+            
+            <div id="mobileNumberDiv">
+                <form id="sendOTP" name="sendOTP" action="/mpp/sendOTP.action" method="post" autocomplete="off">
+        
+                    <div id="messageDiv"></div>
+                    <table class="formTable" style="width: 100%">
+                        <tr>
+                            <td width="40%"><span style="color: rgb(37, 35, 35);"></span>Mobile Number:</td>
+                            <td><span style="float:left; margin: top 8px; margin: left 0;">+91</span><div id="wwgrp_sendOTP_mobileNumber" class="wwgrp">
+        <div id="wwctrl_sendOTP_mobileNumber" class="wwctrl">
+            
+        <input type="text" name="mobileNumber" maxlength="10" value="" id="sendOTP_mobileNumber" placeholder="Enter your  mobile number"/></div> </div></td>
+                        </tr>
+                        
+                      
+                    </table>
+
+
+
+                    <!-- <input type="hidden" name="struts.token.name" value="token" />
+        <input type="hidden" name="token" value="46HUENV1UPD8MQHUYQGR7XKTOA8RC06" /> -->
+
+        <div class="flex justify-center ">
+            <input type="submit" value="Submit" class="btn btn-info text-white rounded  p-1 mx-px "
+              style="background-color: #395B64">
+          </div>
+
+                </form>
+        
+        
+        
+            </div>
+            <div id="otpDiv" style="display: none;">
+            
+                <table class="formTable" style="width: 100%">
+                        <tr>
+                            <td width="25%"><span style="color: red;">*</span>One Time Password (OTP):</td>
+                            <td><div id="wwgrp_otpByUserLogin" class="wwgrp">
+        <div id="wwctrl_otpByUserLogin" class="wwctrl">
+            
+        <input type="text" name="otpByUserLogin" value="" id="otpByUserLogin" onchange="hidefld()" placeholder="Enter the OTP received on Mobile"/></div> </div>
+                            OTP Reference No. : 
+                            </td>
+                        </tr>
+                </table>
+                    
+                    
+                <form id="loginWithOTP" name="loginWithOTP" action="/mpp/loginWithOTP.action" method="post" autocomplete="off">
+        
+                    <div id="messageDiv"></div>
+                    <input type="hidden" name="mobileNumber" value="" id="mobileNumber"/>
+                    
+                    <input type="hidden" name="otpResult" value="" id="otpResult"/>
+                    <input type="hidden" name="otpReference" value="" id="loginWithOTP_otpReference"/>
+                    <table class="formTable" style="width: 100%">
+                        <tr>
+                            <td><input type="hidden" name="otp" value="" id="otp"/>
+                            </td>
+                        </tr>
+                        
+                        
+                        
+                        
+                        <tr>
+                           <td>&nbsp;</td>
+                            <td>
+                                <input type="button" cssStyle="float:left;" cssClass="basic-btn" value='Login' onclick="encriptPass('7YgFAit%wdM1Dw@BMShoSW6f72B6fkTV')"/>
+                            </td>
+                        </tr>
+                    </table>
+                    <input type="hidden" name="struts.token.name" value="token" />
+        <input type="hidden" name="token" value="46HUENV1UPD8MQHUYQGR7XKTOA8RC06" />
+                </form>
+        
+        
+        
+            </div>
+        
+            <br />
+            </div>
+
+           
+                
+                <p style="color: #395B64" class="">Not registered? Please Register Below</p>
+  
+                
+                <div style="width: 60%; margin-left: auto; margin-right: auto; text-align: center;">
+                
+                 <br />
+                <fieldset>
+                <div class="heading">
+                   <h2>Register</h2>
+                </div>
+                <!-- Not displaying action error messages here, since in case of validation error the register page layout is displayed -->
+                <form id="userRegistration" name="userRegistration" action="/mpp/userRegistration.action" method="post" enctype="multipart/form-data" autocomplete="off">
+            
+                    <table class="formTable" style="width: 100%">
+                        <tr>
+                            <td width="50%"><span style="color: red;"></span>Name:</td>
+                            <td><div id="wwgrp_username" class="wwgrp">
+            <div id="wwctrl_username" class="wwctrl">
+                
+            <input type="text" name="user.name" value="" id="username" placeholder="Enter your name"/></div> </div></td>
+                        </tr>
+                        <tr>
+                            <td><span style="color: red;"></span>Mobile Number:</td>
+                            <td>
+                               <span style="float:left; margin: top 8px; margin: left 0;">+91</span>
+                               <div id="wwgrp_number" class="wwgrp">
+            <div id="wwctrl_number" class="wwctrl">
+                
+            <input type="text" name="user.mobileNumber" maxlength="10" value="" id="number" placeholder="Enter your mobile number"/></div> </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Phone Number:</td>
+                            <td><div id="wwgrp_pnumber" class="wwgrp">
+            <div id="wwctrl_pnumber" class="wwctrl">
+                
+            <input type="text" name="user.phoneNumber" maxlength="15" value="" id="pnumber" placeholder="Enter your phone number"/></div> </div></td>
+                        </tr>
+                        <tr>
+                            <td>Email Id:</td>
+                            <td><div id="wwgrp_email" class="wwgrp">
+            <div id="wwctrl_email" class="wwctrl">
+                
+            <input type="text" name="user.email" value="" id="email" placeholder="Enter your email id"/></div> </div></td>
+                        </tr>
+                        <tr>
+                            <td><span style="color: red;">*</span>Address:</td>
+                            <td><div id="wwgrp_address" class="wwgrp">
+            <div id="wwctrl_address" class="wwctrl">
+                
+            <textarea name="user.address" cols="50" rows="3" id="address" placeholder="Enter your address"></textarea></div> </div></td>
+                        </tr>
+                        <tr>
+                            <td><span style="color: red;">*</span>State:</td>
+                            <td><div id="wwgrp_state" class="wwgrp">
+            <div id="wwctrl_state" class="wwctrl">
+                
+            <select name="user.state.id" id="state">
+                <option value="-"
+                >-- Select --</option>
+                <option value="35">Andaman &amp; Nicobar Islands</option>
+                <option value="28">Andhra Pradesh</option>
+                <option value="12">Arunachal Pradesh</option>
+                <option value="18">Assam</option>
+                <option value="10">Bihar</option>
+                <option value="04">Chandigarh</option>
+                <option value="22">Chhatisgarh</option>
+                <option value="26">Dadra &amp; Nagar Haveli</option>
+                <option value="25">Daman &amp; Diu</option>
+                <option value="07">Delhi</option>
+                <option value="30">Goa</option>
+                <option value="24">Gujarat</option>
+                <option value="06">Haryana</option>
+                <option value="02">Himachal Pradesh</option>
+                <option value="01">Jammu and Kashmir</option>
+                <option value="20">Jharkhand</option>
+                <option value="29">Karnataka</option>
+                <option value="32">Kerala</option>
+                <option value="31">Lakshadweep</option>
+                <option value="23">Madhya Pradesh</option>
+                <option value="27">Maharashtra</option>
+                <option value="14">Manipur</option>
+                <option value="17">Meghalaya</option>
+                <option value="15">Mizoram</option>
+                <option value="13">Nagaland</option>
+                <option value="21">Odisha</option>
+                <option value="34">Puducherry</option>
+                <option value="03">Punjab</option>
+                <option value="08">Rajasthan</option>
+                <option value="11">Sikkim</option>
+                <option value="33">Tamil Nadu</option>
+                <option value="36">Telangana</option>
+                <option value="16">Tripura</option>
+                <option value="09">Uttar Pradesh</option>
+                <option value="05">Uttrakhand</option>
+                <option value="19">West Bengal</option>
+            
+            
+            </select>
+            
+            </div> </div> </td>		
+                        </tr>
+                        <tr>
+                            <td><span style="color: red;">*</span>PIN Code:</td>
+                            <td><div id="wwgrp_pincode" class="wwgrp">
+            <div id="wwctrl_pincode" class="wwctrl">
+                
+            <input type="text" name="user.pinCode" maxlength="6" value="" id="pincode" placeholder="Enter PIN Code"/></div> </div></td>
+                        </tr>
+                        <tr>
+                            <td>Aadhaar No:</td>
+                            <td><div id="wwgrp_aadhaarNumber" class="wwgrp">
+            <div id="wwctrl_aadhaarNumber" class="wwctrl">
+                
+            <input type="text" name="user.aadhaarNumber" maxlength="12" value="" id="aadhaarNumber" placeholder="Enter aadhar number"/></div> </div></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span style="color:blue; font-size:0.8em; vertical-align:top;">#</span> Photo ID Proof:
+                            </td>
+                            <td>
+                                <div id="wwgrp_photoIdCard" class="wwgrp">
+            <div id="wwctrl_photoIdCard" class="wwctrl">
+                
+            <input type="file" name="photoIdCard" id="photoIdCard"/></div> </div>
+                                <br />
+                                (Upload JPG, PNG or GIF images under 2 MB)		
+                            </td>
+                            
+                        </tr>
+                        <tr>
+                            <td><span style="color: red;">*</span>Do you want to be contacted:</td>
+                            <td><div id="wwgrp_contpermission" class="wwgrp">
+            <div id="wwctrl_contpermission" class="wwctrl">
+                
+            <input type="radio" name="user.requestContactPermission" id="contpermissiontrue" value="true"/><label for="contpermissiontrue">Yes</label>
+            <input type="radio" name="user.requestContactPermission" id="contpermissionfalse" value="false"/><label for="contpermissionfalse">No</label>
+            </div> </div>
+            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td><span style="color: red;">*</span>Enter Security Code:</td>
+                            <td>
+                                <div id="wwgrp_captcha" class="wwgrp">
+            <div id="wwctrl_captcha" class="wwctrl">
+                
+            <input type="text" name="captcha" value="" id="captcha" style="float:left; margin-right:10px;" placeholder="Enter the security code"/></div> </div>
+                                <img src="captcha" alt="Security Code Image" width="120" height="30" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td><div id="wwgrp_termsCondition" class="wwgrp">
+            <div id="wwctrl_termsCondition" class="wwctrl">
+            
+            
+            <input type="checkbox" name="termsCondition" value="true" id="termsCondition" style="float:left;" type="checkbox"/><input type="hidden" id="__checkbox_termsCondition" name="__checkbox_termsCondition" value="true" /></div> </div>
+            <span style="color: red;">*</span>I accept the. <a href="#" target="_blank">Terms and Conditions</a> as mentioned on this portal<div  class="wwgrp">
+            <div  class="wwctrl">
+                
+            <label for="termsCondition">&nbsp;
+            </label>
+            </div> </div></td>
+                        </tr>
+                        
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>
+                            
+                            
+                                <div>
+                                    <button style="float:left; margin-right:5px;" id="sub" type="button" class="basic-btn" onclick="OTPSend(number.value, username.value, captcha.value, email.value)">Send OTP </button>
+                                </div>
+                            
+                            <span style="color:blue;">#</span>&nbsp;&nbsp; It is mandatory to provide id proof, otherwise the account will be locked after 5 successful login attempts. The user is advised to upload valid id proof
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                           <td>&nbsp;</td>
+                           <td></td>
+                        </tr>
+                        
+                            
+                        
+                    </table>
+                    
+                    <input type="hidden" name="otpByUser" value="" id="otpByUser"/>		
+                    
+                </form>
+            
+            
+            
+                
+                
+                
+                        <div id="otpdiv">
+                            <table id="otptable" style="display: none; width: 100%;">
+                                <tr>
+                                    <td width="25%"><span style="color: red;">*</span>One Time Password (OTP) :</td>
+                                    <td><div id="wwgrp_otpByUserReg" class="wwgrp">
+            <div id="wwctrl_otpByUserReg" class="wwctrl">
+                
+            <input type="text" name="otpByUserReg" value="" id="otpByUserReg" placeholder="Enter the OTP received on Mobile"/></div> </div>
+                                    OTP Reference No. : <span id="otpref"> </span>
+                                    </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>
+                                    <input type="button" id="OTPsub" value='Register'" cssClass="basic-btn" onclick="submitUserRegistration('7YgFAit%wdM1Dw@BMShoSW6f72B6fkTV')" />
+                                    <div id="dialog" title="Submit OTP "></div>
+                                </td>
+                            </tr>
+                    </table>
+                    </div>
+                    
+                    
+                
+                </fieldset>
+                <br />
+                </div>
+            </div>
+
+</div>
+ 
+  
+        
+ 
+    
+
+  <footer class="text-white body-font" style="background-color: #395B64 ; margin-top: 30px">
+    <div
+      class="container px-5 py-16 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
+      <div class="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left md:mt-0 mt-10">
+        <a class="flex title-font font-medium items-start md:justify-start justify-center text-gray-900">
+          <img src="./image/talaash_logo.png" alt="logo" class="w-60 h-60 rounded-full ">
+          <!-- <span class="ml-0 text-3xl text-white">Talaash</span> -->
+        </a>
+        <!-- <p class="mt-2 text-base text-white"> Tracking system for Vulnerable and missing people</p> -->
+      </div>
+      <div class="flex-grow flex flex-wrap md:pr-20 -mb-10 md:text-left text-center order-first justify-between">
+        <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+          <h2 class="title-font text-xl font-medium text-white tracking-widest mb-3">INFORMATION</h2>
+          <nav class="list-none mb-10">
+            <li>
+              <a class=" text-base text-white hover:underline">About The Initiative</a>
+            </li>
+            <li>
+              <a class="text-base text-white hover:underline">Objectives</a>
+            </li>
+            <li>
+              <a class="text-base text-white hover:underline">Important Legistations and Orders</a>
+            </li>
+            <li>
+              <a class="text-base text-white hover:underline">Your Local Help</a>
+            </li>
+          </nav>
+        </div>
+        <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+          <h2 class="title-font text-xl font-medium text-white tracking-widest mb-3">KEY CONTACTS</h2>
+          <nav class="list-none mb-10">
+            <li>
+              <a class="text-base text-white hover:underline">Administrative</a>
+            </li>
+            <li>
+              <a class="text-base text-white hover:underline">Nodal Officers</a>
+            </li>
+            <li>
+              <a class="text-base text-white hover:underline">Contact Persons Of States</a>
+            </li>
+          </nav>
+        </div>
+        <div class="lg:w-1/6 md:w-1/4 w-full px-4">
+          <h2 class="title-font text-xl font-medium text-white tracking-widest  mb-3">TECHNICAL HELP</h2>
+          <nav class="list-none mb-10">
+            <li>
+              <a class=" text-base text-white hover:underline">Tech Support</a>
+            </li>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <div style="background-color: #E7F6F2">
+      <div class="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
+        
+        <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
+          <a class="text-black">
+            <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5"
+              viewBox="0 0 24 24">
+              <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+            </svg>
+          </a>
+          <a class="ml-3 text-black">
+            <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5"
+              viewBox="0 0 24 24">
+              <path
+                d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z">
+              </path>
+            </svg>
+          </a>
+          <a class="ml-3 text-black">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              class="w-5 h-5" viewBox="0 0 24 24">
+              <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+            </svg>
+          </a>
+          <a class="ml-3 text-black">
+            <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+              stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
+              <path stroke="none"
+                d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
+              <circle cx="4" cy="4" r="2" stroke="none"></circle>
+            </svg>
+          </a>
+        </span>
+      </div>
+    </div>
+  </footer>
+
+
+
+
+</body>
+
+</html>
